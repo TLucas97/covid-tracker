@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <title>Covid tracker</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h2>Lucas Senna</h2>
+        </div>
+        <div>
+            <a href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25657.png" width="45">
+            </a>
+            <a href="#">
+                <img src="https://cdn-icons.flaticon.com/png/512/3536/premium/3536505.png?token=exp=1647638792~hmac=cbedc31cea27845ff093d187374fc867" width="45">
+            </a>
+            <a href="#">
+                <img src="https://cdn-icons.flaticon.com/png/512/951/premium/951876.png?token=exp=1647638838~hmac=904b794bd7e12be4175afdc38006e88f" width="45">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="title">
+            <h1>Covid Tracker</h1>
+            <div>
+                <img src="https://cdn-icons-png.flaticon.com/512/17/17452.png" width="60" class="rotation-infinite">
+            </div>
+        </div>
+        <div class="results">
+            <div class="results-box">
+                <h2>Total de casos:
+                    <span id="data"></span>
+                </h2>
+            </div>
+            <div class="results-box">
+                <h2>Total de mortes:
+                    <span id="data2"></span>
+                </h2>
+            </div>
+            <div class="results-box">
+                <h2>Novos casos:
+                    <span id="data3"></span>
+                </h2>
+            </div>
+            <div class="results-box">
+                <h2>Novas recuperações:
+                    <span id="data4"></span>
+                </h2>
+            </div>
+        </div>
+        <div class="refresh">
+            <a href="/">
+                <button>
+                    Atualizar
+                    <div style="display: flex; align-items: center">
+                        <img src="https://cdn-icons.flaticon.com/png/512/1082/premium/1082454.png?token=exp=1647640210~hmac=70f49535dbb107c11f51e3d32a79b9a1" class="rotation-infinite" width="30">
+                    </div>
+                </button>
+            </a>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            init()
+
+            function init(){
+                let url = "https://api.covid19api.com/summary"
+
+                let data = ''
+
+                $.get(url, function(data){
+                    console.log(data.Global.TotalDeaths)
+
+                    data = `
+                    
+                    <small class="animate__animated animate__fadeIn">${data.Global.TotalConfirmed}</small>
+
+                    `
+
+                    $("#data").html(data)
+                })
+            }
+        })
+        $(document).ready(function(){
+            init()
+
+            function init(){
+                let url = "https://api.covid19api.com/summary"
+
+                let data = ''
+
+                $.get(url, function(data){
+                    console.log(data.Global.TotalDeaths)
+
+                    data = `
+                    
+                    <small class="animate__animated animate__fadeIn">${data.Global.TotalDeaths}</small>
+
+                    `
+
+                    $("#data2").html(data)
+                })
+            }
+        })
+        $(document).ready(function(){
+            init()
+
+            function init(){
+                let url = "https://api.covid19api.com/summary"
+
+                let data = ''
+
+                $.get(url, function(data){
+                    console.log(data.Global.TotalDeaths)
+
+                    data = `
+                    
+                    <small class="animate__animated animate__fadeIn">${data.Global.NewConfirmed}</small>
+
+                    `
+
+                    $("#data3").html(data)
+                })
+            }
+        })
+        $(document).ready(function(){
+            init()
+
+            function init(){
+                let url = "https://api.covid19api.com/summary"
+
+                let data = ''
+
+                $.get(url, function(data){
+                    console.log(data.Global.TotalDeaths)
+
+                    data = `
+                    
+                    <small class="animate__animated animate__fadeIn">${data.Global.NewRecovered}</small>
+
+                    `
+
+                    $("#data4").html(data)
+                })
+            }
+        })
+    </script>
+</body>
+</html>
